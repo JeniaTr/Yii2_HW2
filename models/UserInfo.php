@@ -1,20 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jeniatr
- * Date: 26.11.16
- * Time: 23:32
- */
 
 namespace app\models;
 
 use Yii;
 use yii\base\Model;
 
-class UserInfoForm extends Model
+class UserInfo extends Model
 {
-    public $username;
-    public $password;
+
+    public $name;
+    public $email;
 
     public function rules()
     {
@@ -25,3 +20,4 @@ class UserInfoForm extends Model
     }
 
 }
+?>
