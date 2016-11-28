@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use app\models\UserInfo;
 use yii\helpers\Html;
+use yii\web\UploadedFile;
 
 
 class MyController extends \yii\web\Controller
@@ -22,6 +23,9 @@ class MyController extends \yii\web\Controller
     }
 
 
+    /**
+     * @return string
+     */
     public function actionForm()
     {
 //      $model = Yii::createObject('app\models\UserInfoForm');
@@ -34,6 +38,14 @@ class MyController extends \yii\web\Controller
         else {
             $name='';
             $email='';
+        }
+
+        if (Yii::$app->request->isPost) {
+            $model->avatarImage = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
         }
 
         return $this->render('form', [
